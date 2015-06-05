@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LogWriter</string>
+    <string name="title_activity_cat_log">CatLogActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
