@@ -30,3 +30,5 @@ Logger.d("tag" "log message");
 2. If the sdcard doesn't exists, the log path is **/data/data/#{package_name}/files/#{package_name}/#{package_name}.log**.
 3. You need to declare the **WRITE_EXTERNAL_STORAGE** permission in the AndroidManifest.xml.
 4. It save recently 8 days's log at most.
+
+Please forgive my poor English.
