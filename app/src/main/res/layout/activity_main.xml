@@ -11,13 +11,13 @@
 
     <Button
         android:id="@+id/btn_crash"
-        android:text="点我将会导致应用Crash！"
+        android:text="Click me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/btn_cat_log"
-        android:text="查看日志"
+        android:text="Cat log"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
