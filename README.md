@@ -22,3 +22,5 @@ Logger.d("tag" "log message");
 ```
  
  Lastly the **logger.py** is a convenient script that comment or uncomment Logger statement.  
+
+**WARNNING**: The Logger statement must be on a single line!
