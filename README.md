@@ -18,7 +18,7 @@ public class MyApplication extends Application {
 
 Than in your code:
 ``` java
-Logger.d("tag" "log message");
+Logger.d("tag", "log message");
 ```
  
  Lastly the **logger.py** is a convenient script that comment or uncomment Logger statement.  
