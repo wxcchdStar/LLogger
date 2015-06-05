@@ -19,8 +19,8 @@ import ch.qos.logback.core.util.StatusPrinter;
 public final class LogConfigurations {
 
     /**
-     * 1. 如果有外部存储卡，则log文件放在SDCard根目录下的${package_name}文件夹内，文件名为${package_name}.log；
-     * 2. 如果没有外部存储卡，则log文件放在/data/data/${package_name}/files/${package_name}文件夹内，文件名为${package_name}.log。
+     * 1. 如果有外部存储卡，则log文件放在SDCard根目录下的${package_name}文件夹内，文件名为log.txt；
+     * 2. 如果没有外部存储卡，则log文件放在/data/data/${package_name}/files/${package_name}文件夹内，文件名为log.txt。
      * 3. 需要声明WRITE_EXTERNAL_STORAGE权限
      * 4. 可以保留包括今天在内的8天的log文件
      * @param ctx

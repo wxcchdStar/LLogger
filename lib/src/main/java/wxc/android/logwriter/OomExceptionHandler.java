@@ -6,6 +6,7 @@ import android.os.Environment;
 
 import java.io.File;
 
+
 public class OomExceptionHandler {
 
     private static final String FILENAME = "out-of-memory.hprof";
