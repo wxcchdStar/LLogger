@@ -4,17 +4,20 @@ import android.app.Application;
 
 import com.squareup.leakcanary.LeakCanary;
 
-import wxc.android.logwriter.Logger;
+import wxc.android.logwriter.L;
 
-/**
- * Created by Chenhd on 2015/4/8.
- */
 public class MyApplication extends Application {
 
     @Override
     public void onCreate() {
         super.onCreate();
-        Logger.init(this);
         LeakCanary.install(this);
+
+        L.Builder builder = new L.Builder();
+        L.set(builder
+                .addLogCat()
+                .addLocalLog(this)
+                .logCrash(this)
+                .create());
     }
 }

@@ -1,4 +1,4 @@
-package wxc.android.logwriter;
+package wxc.android.logwriter.internal.handler;
 
 import android.content.Context;
 import android.os.Debug;

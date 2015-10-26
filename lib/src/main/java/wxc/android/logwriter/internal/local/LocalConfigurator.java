@@ -1,4 +1,4 @@
-package wxc.android.logwriter;
+package wxc.android.logwriter.internal.local;
 
 import android.content.Context;
 import android.os.Environment;
@@ -16,7 +16,7 @@ import ch.qos.logback.core.rolling.RollingFileAppender;
 import ch.qos.logback.core.rolling.TimeBasedRollingPolicy;
 import ch.qos.logback.core.util.StatusPrinter;
 
-public final class LogConfigurations {
+public final class LocalConfigurator {
 
     /**
      * 1. 如果有外部存储卡，则log文件放在SDCard根目录下的${package_name}文件夹内，文件名为log.txt；
@@ -25,7 +25,7 @@ public final class LogConfigurations {
      * 4. 可以保留包括今天在内的8天的log文件
      * @param ctx
      */
-	public static void startLogger(Context ctx) {
+	public static void openWrite(Context ctx) {
         String packageName = ctx.getPackageName();
         String logName = "log.txt";
         String logPattern = "log.%d.txt";
@@ -66,7 +66,7 @@ public final class LogConfigurations {
 		rollingFileAppender.start();
 		
 		// add the newly created appenders to the root logger;
-		// qualify Logger to disambiguate from org.slf4j.Logger
+		// qualify L to disambiguate from org.slf4j.L
 		Logger root = (Logger) LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
 		root.setLevel(Level.ALL);
 		root.addAppender(rollingFileAppender);
@@ -75,7 +75,7 @@ public final class LogConfigurations {
         StatusPrinter.print(lc);
 	}
 
-	public static void stopLogger() {
+	public static void closeWrite() {
 		// assume SLF4J is bound to logback-classic in the current environment
 	    LoggerContext loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
 	    loggerContext.stop();

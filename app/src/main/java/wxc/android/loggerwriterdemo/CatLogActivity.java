@@ -16,11 +16,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/**
- * Created by Chenhd on 2015/4/8.
- */
 public class CatLogActivity extends ActionBarActivity {
-    private boolean mDestory;
+    private boolean mDestroy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +59,7 @@ public class CatLogActivity extends ActionBarActivity {
 
             @Override
             protected void onPostExecute(String result) {
-                if (isFinishing() || mDestory) return;
+                if (isFinishing() || mDestroy) return;
                 logTv.setText(result);
                 contentView.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.GONE);
@@ -74,8 +71,8 @@ public class CatLogActivity extends ActionBarActivity {
 
     @Override
     protected void onDestroy() {
+        mDestroy = true;
         super.onDestroy();
-        mDestory = true;
     }
 
     public static String getLogPath(Context ctx) {

@@ -23,7 +23,7 @@
 #Uncomment if using annotations to keep them.
 -keepattributes *Annotation*
 
--keep public class wxc.android.logwriter.Logger { *; }
+-keep public class wxc.android.logwriter.L { *; }
 
 #Maintain java native methods
 -keepclasseswithmembernames class * {
