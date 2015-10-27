@@ -18,3 +18,13 @@ L.d("message1", "message2", 3);
 2. If the sdcard doesn't exists, the log path is **/data/data/#{package_name}/files/#{package_name}/log.txt**.
 3. You need to declare the **WRITE_EXTERNAL_STORAGE** permission in the AndroidManifest.xml.
 4. It save recently 8 days's log at most.
+
+# Version
+v1.0.0：
+1.write log to file
+2.log crash info
+3.logger.py
+
+v1.1.0
+1.Format log
+2.Simplify usage
