@@ -14,10 +14,6 @@ public class MyApplication extends Application {
         LeakCanary.install(this);
 
         L.Builder builder = new L.Builder();
-        L.set(builder
-                .addLogCat()
-                .addLocalLog(this)
-                .logCrash(this)
-                .create());
+        L.set(builder.addLogCat().addLocalLog(this).logCrash(this).create());
     }
 }

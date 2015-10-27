@@ -10,7 +10,7 @@ def commentLog(path):
 	isCommented = False
 	fout = open(path, "r")
 	for line in fout.readlines():
-		if re.match("\s*Logger\..*(.*);", line) or re.match("import wxc\.android\.logwriter\.Logger;", line):
+		if re.match("\s*L\..*(.*);", line) or re.match("import wxc\.android\.logwriter\.L;", line):
 			line = "// " + line
 			isCommented = True
 		lines.append(line)
@@ -26,7 +26,7 @@ def uncommentLog(path):
 	hasComment = False
 	fout = open(path, "r")
 	for line in fout.readlines():
-		if re.match("\s*//\s*Logger\..*(.*);", line) or re.match("\s*//\s*import wxc\.android\.logwriter\.Logger;", line):
+		if re.match("\s*//\s*L\..*(.*);", line) or re.match("\s*//\s*import wxc\.android\.logwriter\.L;", line):
 			index = line.index("// ") + 3
 			line = line[index:]
 			hasComment = True
@@ -44,16 +44,19 @@ if __name__ == "__main__":
 		# print mode, type(mode)
 		# print sys.path[0]
 		os.chdir(sys.path[0])
-		if mode == '0':
-			os.rename("app/libs/logwriter-1.0.0.jar", "logwriter-1.0.0.jar") 
-		else:
-			os.rename("logwriter-1.0.0.jar", "app/libs/logwriter-1.0.0.jar") 
+		try:
+			if mode == '0':
+				os.rename("app/libs/llogger.jar", "llogger.jar") 
+			else:
+				os.rename("llogger.jar", "app/libs/llogger.jar") 
+		except OSError:
+			pass
 			
-		for root, dirs, files in os.walk("app\src\main\java"):
+		for root, dirs, files in os.walk("app/src/main/java"):
 			if len(files) > 0:
 				for f in files:
 					if f.endswith(".java"):
-						path = root + '\\' + f
+						path = root + '/' + f
 						if mode == '0':
 							commentLog(path)
 						else:
