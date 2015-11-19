@@ -67,7 +67,7 @@ public abstract class BaseBoxPrinter implements IPrinter {
                 return;
             }
         } catch (JSONException e) {
-            e.printStackTrace();
+            // do nothing
         }
        printLines(level, msg);
     }

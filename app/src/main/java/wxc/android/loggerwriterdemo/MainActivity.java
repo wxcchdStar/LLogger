@@ -4,13 +4,18 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import wxc.android.logwriter.L;
@@ -48,6 +53,7 @@ public class MainActivity extends ActionBarActivity {
         super.onStart();
         L.d("onStart");
 
+        // json
         JSONObject json = new JSONObject();
         try {
             json.put("boolean", true);
@@ -66,6 +72,23 @@ public class MainActivity extends ActionBarActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        // map
+        Map<String, String> map = new HashMap<>();
+        map.put("key1", "value1");
+        map.put("key2", "value2");
+        map.put("key3", "value3");
+        map.put("key4", null);
+        map.put(null, "value5");
+        L.e(map);
+
+        // list
+        List<String> list = new ArrayList<>();
+        list.add("1");
+        list.add("2");
+        list.add(null);
+        L.e(list);
+        Log.e("test", list.toString());
     }
 
     @Override
