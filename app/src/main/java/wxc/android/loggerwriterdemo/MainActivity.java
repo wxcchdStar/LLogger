@@ -12,6 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -88,6 +89,7 @@ public class MainActivity extends ActionBarActivity {
         list.add("2");
         list.add(null);
         L.e(list);
+        L.e(Arrays.toString(list.toArray()));
         Log.e("test", list.toString());
     }
 
