@@ -20,6 +20,9 @@ L.d("message1", "message2", 3);
 4. It save recently 8 days's log at most.
 
 # Version
+### v1.1.1
+1. Modify the style of the log print
+
 ### v1.1.0
 1. Format log
 2. Simplify usage
