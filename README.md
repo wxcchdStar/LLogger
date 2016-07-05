@@ -1,7 +1,7 @@
 # LLogger
 A tool that write log to local and format logcat's display.
 
-You use this for saving app's log, incule crash log.
+You use this for saving app's log, include crash log.
 
 # Getting started
 In your `build.gradle`:
