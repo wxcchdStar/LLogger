@@ -2,7 +2,6 @@ package wxc.android.logwriter.internal.utils;
 
 import wxc.android.logwriter.L;
 
-
 public class Utils {
 
     public static int computeStackOffset(StackTraceElement[] elements) {
@@ -19,4 +18,5 @@ public class Utils {
         }
         return -1;
     }
+
 }

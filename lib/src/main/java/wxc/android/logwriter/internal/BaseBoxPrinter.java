@@ -1,5 +1,7 @@
 package wxc.android.logwriter.internal;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,7 +26,15 @@ public abstract class BaseBoxPrinter implements IPrinter {
         String prefix = stackTrace + " " + threadInfo + " ";
 
         for (Object obj : msg) {
-            printMsg(level, prefix, obj == null ? "null" : obj.toString());
+            String message;
+            if (obj == null) {
+                message = "null";
+            } else if (obj instanceof Throwable) {
+                message = Log.getStackTraceString((Throwable) obj);
+            } else {
+                message = obj.toString();
+            }
+            printMsg(level, prefix, message);
         }
     }
 

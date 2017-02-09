@@ -91,6 +91,9 @@ public class MainActivity extends ActionBarActivity {
         L.e(list);
         L.e(Arrays.toString(list.toArray()));
         Log.e("test", list.toString());
+
+        // throwable
+        L.e(new NullPointerException("Hahahahaha..."));
     }
 
     @Override

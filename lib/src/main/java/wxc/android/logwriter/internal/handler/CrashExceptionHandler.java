@@ -4,10 +4,6 @@ import android.content.Context;
 import android.os.Process;
 import android.util.Log;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.net.UnknownHostException;
-
 import wxc.android.logwriter.L;
 
 public class CrashExceptionHandler implements Thread.UncaughtExceptionHandler {
@@ -27,7 +23,7 @@ public class CrashExceptionHandler implements Thread.UncaughtExceptionHandler {
 
     @Override
     public void uncaughtException(Thread thread, Throwable ex) {
-        L.e("Crash:" + getCrashInfo(ex));
+        L.e("Crash:" + Log.getStackTraceString(ex));
 
         OomExceptionHandler.uncaughtException(mContext, thread, ex);
 
@@ -40,28 +36,4 @@ public class CrashExceptionHandler implements Thread.UncaughtExceptionHandler {
         }
     }
 
-    /**
-     * {@link Log#getStackTraceString(Throwable)}
-     */
-    private static String getCrashInfo(Throwable tr) {
-        if (tr == null) {
-            return "";
-        }
-
-        // This is to reduce the amount of log spew that apps do in the non-error
-        // condition of the network being unavailable.
-        Throwable t = tr;
-        while (t != null) {
-            if (t instanceof UnknownHostException) {
-                return "";
-            }
-            t = t.getCause();
-        }
-
-        StringWriter sw = new StringWriter();
-        PrintWriter pw = new PrintWriter(sw);
-        tr.printStackTrace(pw);
-        pw.flush();
-        return sw.toString();
-    }
 }
