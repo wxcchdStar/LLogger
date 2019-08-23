@@ -32,6 +32,11 @@ L.d("message");
 L.d("message1", "message2", 3);
 ```
 
+# Proguard
+```
+-keep public class wxc.android.logwriter.L { *; }
+```
+
 # Tips
 1. If the sdcard exists, the log path is /Android/data/#{package_name}/log/log.txt**.
 2. If the sdcard doesn't exists, the log path is **/data/data/#{package_name}/files/#{package_name}/log.txt**.
