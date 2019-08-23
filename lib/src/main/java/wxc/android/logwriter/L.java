@@ -16,7 +16,7 @@ public final class L {
 
     public static final String TAG = "LLogger";
 
-    private volatile static L sLogger;
+    private static volatile L sLogger;
 
     private List<IPrinter> mPrinters;
 
@@ -69,10 +69,6 @@ public final class L {
 
     public static class Builder {
         private List<IPrinter> mPrinters = new ArrayList<>();
-
-        public Builder() {
-
-        }
 
         public Builder addLogCat() {
             mPrinters.add(new LogcatPrinter());

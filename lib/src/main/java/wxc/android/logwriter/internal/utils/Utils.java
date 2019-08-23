@@ -1,5 +1,10 @@
 package wxc.android.logwriter.internal.utils;
 
+import android.content.Context;
+import android.os.Environment;
+
+import java.io.File;
+
 import wxc.android.logwriter.L;
 
 public class Utils {
@@ -19,4 +24,14 @@ public class Utils {
         return -1;
     }
 
+    public static String getLogDir(Context ctx) {
+        String packageName = ctx.getPackageName();
+        String filePath;
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            filePath = ctx.getExternalFilesDir("log") + File.separator;
+        } else {
+            filePath = ctx.getFilesDir() + File.separator + packageName + File.separator;
+        }
+        return filePath;
+    }
 }

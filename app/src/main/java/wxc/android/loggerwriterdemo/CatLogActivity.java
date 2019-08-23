@@ -3,20 +3,20 @@ package wxc.android.loggerwriterdemo;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class CatLogActivity extends ActionBarActivity {
+import wxc.android.logwriter.internal.utils.Utils;
+
+public class CatLogActivity extends AppCompatActivity {
     private boolean mDestroy;
 
     @Override
@@ -25,8 +25,8 @@ public class CatLogActivity extends ActionBarActivity {
         setContentView(R.layout.activity_cat_log);
 
         final String logPath = getLogPath(this);
-        final TextView logTv = (TextView) findViewById(R.id.tv_log);
-        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressbar);
+        final TextView logTv = findViewById(R.id.tv_log);
+        final ProgressBar progressBar = findViewById(R.id.progressbar);
         final View contentView = findViewById(R.id.content);
 
         new AsyncTask<String, Void, String>() {
@@ -76,13 +76,6 @@ public class CatLogActivity extends ActionBarActivity {
     }
 
     public static String getLogPath(Context ctx) {
-        String packageName = ctx.getPackageName();
-        String logPath;
-        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            logPath = Environment.getExternalStorageDirectory() + File.separator + packageName + File.separator;
-        } else {
-            logPath = ctx.getFilesDir() + File.separator + packageName + File.separator;
-        }
-        return logPath + "log.txt";
+        return Utils.getLogDir(ctx) + "log.txt";
     }
 }

@@ -17,7 +17,7 @@ allprojects {
 ...
 
 dependencies {
-    compile 'com.github.wxcchdStar:LLogger:v1.1.1'
+    implementation 'com.github.wxcchdStar:LLogger:v1.3.0'
 }
 ```
 In your `Application` class:
@@ -33,7 +33,6 @@ L.d("message1", "message2", 3);
 ```
 
 # Tips
-1. If the sdcard exists, the log path is **/sdcard/#{package_name}/log.txt**.
+1. If the sdcard exists, the log path is /Android/data/#{package_name}/log/log.txt**.
 2. If the sdcard doesn't exists, the log path is **/data/data/#{package_name}/files/#{package_name}/log.txt**.
-3. You need to declare the **WRITE_EXTERNAL_STORAGE** permission in the AndroidManifest.xml.
-4. It save recently 8 days's log at most.
+3. It save recently 8 days's log at most.

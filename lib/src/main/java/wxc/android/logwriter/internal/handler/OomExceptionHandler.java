@@ -2,9 +2,10 @@ package wxc.android.logwriter.internal.handler;
 
 import android.content.Context;
 import android.os.Debug;
-import android.os.Environment;
 
 import java.io.File;
+
+import wxc.android.logwriter.internal.utils.Utils;
 
 
 public class OomExceptionHandler {
@@ -13,23 +14,12 @@ public class OomExceptionHandler {
 
     public static void uncaughtException(Context ctx, Thread thread, Throwable ex) {
         if (containsOom(ex)) {
-            File heapDumpFile = new File(getOOMFileDir(ctx), FILENAME);
+            File heapDumpFile = new File(Utils.getLogDir(ctx), FILENAME);
             try {
                 Debug.dumpHprofData(heapDumpFile.getAbsolutePath());
             } catch (Throwable ignored) {
             }
         }
-    }
-
-    private static String getOOMFileDir(Context ctx) {
-        String packageName = ctx.getPackageName();
-        String filePath;
-        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            filePath = Environment.getExternalStorageDirectory() + File.separator + packageName + File.separator;
-        } else {
-            filePath = ctx.getFilesDir() + File.separator + packageName + File.separator;
-        }
-        return filePath;
     }
 
     private static boolean containsOom(Throwable ex) {
